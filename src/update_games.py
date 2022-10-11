@@ -1,23 +1,17 @@
 import feedparser
-import os
 import smtplib
-
 from datetime import datetime
-from utils import get_sendfrom_email, get_sendto_email, get_apppassword
+from os.path import dirname, abspath
+from utils import get_sendfrom_email, get_sendto_email, get_apppassword, get_newest_file_game
 
 #RSS feed of free games - https://steamcommunity.com/groups/freegamesfinders/announcements
 d = feedparser.parse('https://steamcommunity.com/groups/freegamesfinders/rss/')
 
 def update_game_list():
     #File of all games in RSS feed
-    with open(os.path.dirname(__file__) + '/games.txt','w') as f:
+    with open(dirname(dirname(abspath(__file__))) + '/games.txt','w') as f:
         for entry in d.entries:
             f.write(f'{entry.title}\n') 
-
-def get_newest_file_game():
-    #get newest game on top of file
-    with open(os.path.dirname(__file__) + '/games.txt', 'r') as f:
-        return f.readline().strip()
 
 def get_newest_RSS_game():
     #get newest game on RSS feed
