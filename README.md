@@ -1,6 +1,13 @@
 # FreeGameAlert  
 
-how to use:  
+## What does this do?
+It reads the [RSS feed](https://steamcommunity.com/groups/freegamesfinders/rss/) from [this steam group](https://steamcommunity.com/groups/freegamesfinders/announcements), puts all of the games in the RSS feed into a text file called `games`.  
+
+When the `update_games.py` script is run it will check if the newest added game to the feed is different from the newest game in the `games` file. If the games are different, a new game is free! It will then alert you via email.  
+
+All of the cool people tell me to use a burner email to send alerts from, so I just did what they said :D.
+
+## how to use:  
 1. `git clone https://github.com/ecmagnuson/FreeGameAlert.git`  
 2. change `auth/emailto` to desired email to send to  
 3. change `auth/emailfrom` to desired email to send from  
