@@ -54,6 +54,6 @@ def alert():
         msg=f'subject:Free Game! {get_CST_deadline()} \n\n Looks like there is a free game :D \n\n {d.entries[0].title} is free right now. \n See the link: {d.entries[0].link} \n\n {get_CST_deadline()}.')
 
 if __name__ == '__main__':
-    if is_same_game():
+    if not is_same_game():
         alert()
         update_game_list()
