@@ -2,6 +2,9 @@ import feedparser
 import os
 import smtplib
 
+import tkinter as tk
+from tkinter import messagebox
+
 from datetime import datetime
 from utils import get_sendfrom_email, get_sendto_email, get_apppassword
 
@@ -43,7 +46,7 @@ def get_CST_deadline():
     d = datetime.strptime(CST_time, "%H:%M")
     return f'{deadline} {d.strftime("%I:%M %p")}'
 
-def alert():
+def email():
     #Google removed less-secure-apps now must use app password
     #https://stackoverflow.com/questions/72480454/sending-email-with-python-google-disables-less-secure-apps
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as connection:  
@@ -53,7 +56,13 @@ def alert():
         connection.sendmail(from_addr=email_address, to_addrs=get_sendto_email(), 
         msg=f'subject:Free Game! {get_CST_deadline()} \n\n Looks like there is a free game :D \n\n {d.entries[0].title} is free right now. \n See the link: {d.entries[0].link} \n\n {get_CST_deadline()}.')
 
+def alert():
+    root = tk.Tk()
+    root.withdraw()
+    messagebox.showwarning('Free Game!', 'New free game :)')
+
 if __name__ == '__main__':
     if not is_same_game():
+        email()
         alert()
         update_game_list()
