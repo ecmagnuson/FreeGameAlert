@@ -1,20 +1,22 @@
-from utils import get_sendfrom_email, get_sendto_email, get_apppassword
-from datetime import datetime
 import feedparser
+import os
 import smtplib
+
+from datetime import datetime
+from utils import get_sendfrom_email, get_sendto_email, get_apppassword
 
 #RSS feed of free games - https://steamcommunity.com/groups/freegamesfinders/announcements
 d = feedparser.parse('https://steamcommunity.com/groups/freegamesfinders/rss/')
 
 def update_game_list():
     #File of all games in RSS feed
-    with open('games.txt','w') as f:
+    with open(os.path.dirname(__file__) + '/games.txt','w') as f:
         for entry in d.entries:
             f.write(f'{entry.title}\n') 
 
 def get_newest_file_game():
     #get newest game on top of file
-    with open('games.txt', 'r') as f:
+    with open(os.path.dirname(__file__) + '/games.txt', 'r') as f:
         return f.readline().strip()
 
 def get_newest_RSS_game():
@@ -52,6 +54,6 @@ def alert():
         msg=f'subject:Free Game! {get_CST_deadline()} \n\n Looks like there is a free game :D \n\n {d.entries[0].title} is free right now. \n See the link: {d.entries[0].link} \n\n {get_CST_deadline()}.')
 
 if __name__ == '__main__':
-    if not is_same_game():
+    if is_same_game():
         alert()
         update_game_list()
