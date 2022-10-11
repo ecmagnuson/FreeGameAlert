@@ -43,7 +43,7 @@ def get_CST_deadline():
     d = datetime.strptime(CST_time, "%H:%M")
     return f'{deadline} {d.strftime("%I:%M %p")}'
 
-def alert():
+def email():
     #Google removed less-secure-apps now must use app password
     #https://stackoverflow.com/questions/72480454/sending-email-with-python-google-disables-less-secure-apps
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as connection:  
@@ -55,5 +55,5 @@ def alert():
 
 if __name__ == '__main__':
     if not is_same_game():
-        alert()
+        email()
         update_game_list()
