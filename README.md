@@ -19,10 +19,7 @@ All of the cool people tell me to use a burner email to send alerts from, so I j
 7. Running the file `update_games.py` should now work  
 
 I'm running this script every day or so on a VPS, but you could just have it run on boot or something to notify you  
-  
-The games file is a representative of `update_games.update_game_list()` and lists all of the games in the RSS feed  
 
-  
 
 When you change the auth/files, .gitignore won't ignore them because they are tracked. You can make git ignore these files like [this](https://stackoverflow.com/questions/1274057/how-do-i-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore/20241145#20241145)  
 For example, to ignore auth and all recursive files  
