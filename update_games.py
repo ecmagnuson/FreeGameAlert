@@ -59,10 +59,10 @@ def email():
 def alert():
     root = tk.Tk()
     root.withdraw()
-    messagebox.showwarning('Free Game!', 'New free game :)')
+    messagebox.showwarning('Free Game!', f'Looks like there is a free game :D \n\n {d.entries[0].title} is free right now. \n\n {get_CST_deadline()}.')
 
 if __name__ == '__main__':
-    if not is_same_game():
+    if is_same_game():
         email()
         alert()
         update_game_list()
