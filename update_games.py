@@ -36,7 +36,7 @@ def alert():
         email_password = get_apppassword()
         connection.login(email_address, email_password )
         connection.sendmail(from_addr=email_address, to_addrs=get_sendto_email(), 
-        msg=f'subject:Free Game! \n\n Looks like there is a free game :D \n {d.entries[0].title} is free right now. \n\n See the link: {d.entries[0].link} \n {get_offer_deadline()}.')
+        msg=f'subject:Free Game! {get_offer_deadline()} \n\n Looks like there is a free game :D \n\n {d.entries[0].title} is free right now. \n See the link: {d.entries[0].link} \n\n {get_offer_deadline()}.')
 
 if __name__ == '__main__':
     if not is_same_game():
