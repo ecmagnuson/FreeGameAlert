@@ -18,6 +18,14 @@ All of the cool people tell me to use a burner email to send alerts from, so I j
 6. change `auth/app_password` to app password  
 7. Running the file `update_games.py` should now work  
 
+If you see something like:  
+
+```
+raise SMTPAuthenticationError(code, resp)  
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted.) ...
+```
+It's because you didn't change the credentials in the auth dir most likely
+
 I'm running this script every day or so on a VPS, but you could just have it run on boot or something to notify you  
 
 
