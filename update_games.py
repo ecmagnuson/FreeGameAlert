@@ -7,13 +7,13 @@ d = feedparser.parse('https://steamcommunity.com/groups/freegamesfinders/rss/')
 
 def update_game_list():
     #File of all games in RSS feed
-    with open('games','w') as f:
+    with open('games.txt','w') as f:
         for entry in d.entries:
             f.write(f'{entry.title}, {entry.published}\n') 
 
 def get_newest_file_game():
     #get newest game on top of file
-    with open('games', 'r') as f:
+    with open('games.txt', 'r') as f:
         return f.readline().strip()
 
 def get_newest_RSS_game():
