@@ -27,7 +27,8 @@ smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepte
 It's because you didn't change the credentials in the auth dir most likely
 
 I'm running this script every day or so on a VPS, but you could just have it run on boot or something to notify you  
-
+Adding to cronjob:  
+`@reboot /usr/bin/python /path/to/update_games.py`  
 
 When you change the auth/files, .gitignore won't ignore them because they are tracked. You can make git ignore these files like [this](https://stackoverflow.com/questions/1274057/how-do-i-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore/20241145#20241145)  
 For example, to ignore auth and all recursive files  
