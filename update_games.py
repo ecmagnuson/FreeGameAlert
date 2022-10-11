@@ -25,8 +25,7 @@ def is_same_game():
     return get_newest_file_game() == get_newest_RSS_game()
 
 def get_offer_deadline():
-    #TODO
-    return f'{d.entries[0].description}'.strip()
+    return d.entries[0].description[d.entries[0].description.index('Offer') : d.entries[0].description.index('GMT') + 3]
 
 def alert():
     #Google removed less-secure-apps now must use app password
@@ -37,7 +36,7 @@ def alert():
         email_password = get_apppassword()
         connection.login(email_address, email_password )
         connection.sendmail(from_addr=email_address, to_addrs=get_sendto_email(), 
-        msg=f'subject:Free Game! \n\n Looks like there is a free game :D \n {d.entries[0].title} is free right now. \n\n See the link: {d.entries[0].link}')
+        msg=f'subject:Free Game! \n\n Looks like there is a free game :D \n {d.entries[0].title} is free right now. \n\n See the link: {d.entries[0].link} \n {get_offer_deadline()}.')
 
 if __name__ == '__main__':
     if not is_same_game():
