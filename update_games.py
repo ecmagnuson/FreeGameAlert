@@ -44,16 +44,14 @@ def get_CST_deadline():
 def alert():
     #Google removed less-secure-apps now must use app password
     #https://stackoverflow.com/questions/72480454/sending-email-with-python-google-disables-less-secure-apps
-    #send email if games are not the same
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as connection:  
         email_address = get_sendfrom_email()
         email_password = get_apppassword()
         connection.login(email_address, email_password )
         connection.sendmail(from_addr=email_address, to_addrs=get_sendto_email(), 
-        msg=f'subject:Free Game! {get_offer_deadline()} \n\n Looks like there is a free game :D \n\n {d.entries[0].title} is free right now. \n See the link: {d.entries[0].link} \n\n {get_CST_deadline()}.')
+        msg=f'subject:Free Game! {get_CST_deadline()} \n\n Looks like there is a free game :D \n\n {d.entries[0].title} is free right now. \n See the link: {d.entries[0].link} \n\n {get_CST_deadline()}.')
 
 if __name__ == '__main__':
     if not is_same_game():
         alert()
         update_game_list()
-    
