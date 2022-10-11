@@ -7,17 +7,17 @@ When the `update_games.py` script is run it will check if the newest added game 
 
 With the way I have this set up - you have to send from a gmail account. You then must create an app password to use for this script (see instructions below)  
 
-All of the cool people tell me to use a burner email to send alerts from, so I just did what they said :D.
+All of the cool people tell me to use a burner email to send alerts from, so I just did what they said :D  
 
 ## Instructions:  
 1. `git clone https://github.com/ecmagnuson/FreeGameAlert.git`  
 2. change `auth/emailto` to desired email to send to  
 3. change `auth/emailfrom` to desired email to send from - must be a gmail  
-4. [create an app password](https://support.google.com/accounts/answer/185833?hl=en) with desire google account  
+4. [create an app password](https://support.google.com/accounts/answer/185833?hl=en) with email we made in step 3  
 5. change `auth/app_password` to app password  
 6. Running the file `update_games.py` should now work  
   
-The games file is a representative of `update_games.update_game_list()`  
+The games file is a representative of `update_games.update_game_list()` and lists all of the games in the RSS feed  
 
   
 
